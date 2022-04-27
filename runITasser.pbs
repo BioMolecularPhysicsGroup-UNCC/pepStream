@@ -1,0 +1,21 @@
+#PBS -S /bin/bash
+#PBS -q copperhead
+#PBS -N i-Tasser
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=14:00:00
+#PBS -e iTasser_error.err
+#PBS -o iTasserRun.log
+cd $PBS_O_WORKDIR
+
+module load parallel/20190322 i-tasser/5.1
+module load jdk/9.0.4
+module load blast
+
+/apps/pkg/i-tasser/5.1/I-TASSERmod/runI-TASSER.pl \
+-runstyle gnuparallel -pkgdir /apps/pkg/i-tasser/5.1 \
+-libdir /users/jpatte75/ITLIB \
+-LBS true -EC true -GO true \
+-seqname P25 \
+-datadir /users/jpatte75/iTasserModels/Peptides-Xiaolin/P25 \
+-java_home /usr -light true -hours 8 \
+-outdir /users/jpatte75/iTasserModels/Peptides-Xiaolin/output_P25 > output_P25_${PBS_JOBID}.log

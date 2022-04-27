@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -S /bin/bash
+#PBS -q copperhead
+#PBS -N zdoccckkkkk
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=8:00:00
+#PBS -e zdock_error.err
+#PBS -o zdockRun.log
+cd $PBS_O_WORKDIR
+
+
+mark_sur model1.pdb model1_m.pdb
+mark_sur model2.pdb model2_m.pdb
+mark_sur model3.pdb model3_m.pdb
+mark_sur model4.pdb model4_m.pdb
+mark_sur model5.pdb model5_m.pdb
+
+for VARIABLE in 1 2 3 4 5 6 7 8 9 10
+do
+zdock -R DELLA_Model${VARIABLE}_m.pdb -L model1_m.pdb -N 2000 -o model1_DELLA_Model${VARIABLE}.out
+zdock -R DELLA_Model${VARIABLE}_m.pdb -L model2_m.pdb -N 2000 -o model2_DELLA_Model${VARIABLE}.out
+zdock -R DELLA_Model${VARIABLE}_m.pdb -L model3_m.pdb -N 2000 -o model3_DELLA_Model${VARIABLE}.out 
+zdock -R DELLA_Model${VARIABLE}_m.pdb -L model4_m.pdb -N 2000 -o model4_DELLA_Model${VARIABLE}.out
+zdock -R DELLA_Model${VARIABLE}_m.pdb -L model5_m.pdb -N 2000 -o model5_DELLA_Model${VARIABLE}.out
+done
+#zdock -R DELLA_m2.pdb -L model2_m.pdb -N 200 -o model2_DELLA.out
+#creat.pl model2_DELLA.out
