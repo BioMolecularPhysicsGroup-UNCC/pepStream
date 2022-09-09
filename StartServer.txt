@@ -1,0 +1,17 @@
+To start a server for this notebook, to allow batch job submissions
+
+jupyter notebook --no-browser --port=8890
+
+In a different terminal 
+
+ssh -N -f -L localhost:8888:localhost:8890 jpatte75@hpc.uncc.edu
+
+In a browser, ex Chrome, type this into the url. Note which port was used above for local port
+
+localhost:8888
+
+
+To close connections ctrl+C on the remote side and on the local machine
+
+localuser@localhost: sudo netstat -lpn |grep :YYYY
+
