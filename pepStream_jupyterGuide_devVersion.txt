@@ -1,0 +1,67 @@
+%=========================================================================%
+%    pepStream BMPG developer team Jupyter server guide [TG 09-10-2022]   %
+%-------------------------------------------------------------------------%
+%  Purpose: This guide instructs a user how to run a "headless"
+%           Jupyter notebook where a graphical user interface on the
+%           user's local machine is linked to the computing resources of
+%           an HPC cluster (UNCC/PFR). In these inscrutions (step 2) the
+%           user will need to replace username@hpc.uncc with their HPC
+%           account username, for example: jpatte75@hpc.uncc.edu.
+%-------------------------------------------------------------------------%
+
+Step 0: Ensure that you are operating with the most recent pepStream
+        version (JP 09-08-2022), currently available on github at:
+        https://github.com/BioMolecularPhysicsGroup-UNCC/pepStream.
+        Put all corresponding pepStream files in the desired directory
+        on the HPC where pepStream is intended to be executed. The most
+        recent version of pepStream will always be pepStream_TG.ipynb,
+        leaving the JP version (pepStream_vX.ipynb) untouched. All devs
+        are encouraged to create their own notebook version using the
+        naming convention pepStream_XX.ipynb where XX represents the dev's
+        initials. Further streamlining options will be explored such as
+        using the PyCharm IDE as the user's local terminal where NM and TG
+        can commit/push directly to the pepStream github repo.
+
+%-------------------------------------------------------------------------%
+
+Step 1: The first step is to initialize a Jupyter server from the HPC.
+        Navigate to the desired run directory where the files from step 0
+        are located, for example: ../users/tgrear/pepStream. Next,
+        perform the following command at the terminal command line:
+
+     i) jupyter notebook --no-browser --port=8890
+         Note: This may boot the Jupyter file explorer in your default
+               browser depending on your OS configuration by removing the
+               --no-browser option above. If the Jupyter file explorer did
+               not boot automatically proceed to step 2; otherwise, bypass
+               steps 2 and 3.
+
+%-------------------------------------------------------------------------%
+
+Step 2: From a new terminal on your local machine enter the command:
+
+     i) ssh -N -f -L localhost:8888:localhost:8890 username@hpc.uncc
+         Note: This will prompt you to enter your password/Duo two-factor
+               authorization. Reminder: replace username@hpc.uncc.
+
+%-------------------------------------------------------------------------%
+
+Step 3: After verifying the HPC password on your local terminal, enter
+        localhost:8888 into your browser address bar and hit enter. This
+        will load the Jupyter file explorer containing all files/scripts
+        that are within the HPC directory where the Jupyter server was
+        launched. Lastly, open the desired Jupyter notebook file from the
+        Jupyter file explorer (i.e. pepStream_TG.ipynb). Detailed
+        instructions for the operation and use of pepStream are provided
+        within the Jupyter notebook.
+         Note: the port number (8888) is different in step 3 than was used
+               in step 1 (8890).
+ _________________________________________________________________________
+%_________________________________________________________________________%
+
+**  To close the Jupyter server connection use ctrl+C. Some OS configs   **
+**  may require you to ctrl+C on both HPC and local machine terminals.   **
+
+%-------------------------------------------------------------------------%
+This server guide was created by John Patterson and Edited by Tyler Grear %
+%-------------------------------------------------------------------------%
