@@ -1,3 +1,36 @@
+# ======================================================================================= #
+#                                                 ###                                     #
+#    File:    PSS2Seqs.py                         ###    BioMolecular Physics Group       #
+#    Author:  John Patterson                      ###   University of North Carolina      #
+#    Created: 04-01-2019                          ###           at Charlotte              #
+#                                                 ###                                     #
+# ======================================================================================= #
+# DESCRIPTION:
+#    Takes as input a position-specific scoring matrix (PSSM) that is output from
+#    psi-blast, along with an alignment (i.e. EMBOSSS, clustal, et cetera). As output,
+#    a fasta file the unique sequences with substituted AA
+# --------------------------------------------------------------------------------------- #
+# DEPENDENCIES:
+#    Bio 1.4.0
+#    numpy 1.22.0
+# --------------------------------------------------------------------------------------- #
+# INPUT:
+#    sequenceOfInterest.fasta = String containing N characters, where N is the number
+#                               of residues/AAs. Each character in the sequence of
+#                               interest follows the 1-letter residue naming convention.
+# --------------------------------------------------------------------------------------- #
+# OUTPUT:
+#    footprint_i = Directory for the i-th set of fragments. This directory is
+#                  saved to local disk at the out_folder path defined below.
+# --------------------------------------------------------------------------------------- #
+# USAGE:
+#    Bash: python WindowSequence.py --f1 sequenceOfInterest --c1 window [--o1 output1]
+# --------------------------------------------------------------------------------------- #
+# BASH OPTIONS:
+#    f1 = Input sequence.
+#    c1 = Number of desired sequence partitions/fragments.
+#    o1 = Desired output file name.
+# ======================================================================================= #
 import os
 import re
 import sys
