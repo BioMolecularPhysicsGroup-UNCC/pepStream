@@ -32,16 +32,16 @@
 #    c1 = Number of desired sequence partitions/fragments.
 #    o1 = Desired output file name.
 # ======================================================================================= #
-import os  # Import miscellaneous operating system interfaces module
-import random  # Import random module for rng
-import re  # Import regular expression operations
-import sys  # Import system-specific parameters and functions module
-from optparse import OptionParser  # Import option parser module
-import numpy as np  # Import numpy module
-from Bio import SeqIO  # Import required BIO modules
-from Bio.Seq import Seq  # Import callable function from Seq module
+import os                            # Import miscellaneous operating system interfaces
+import random                        # Import random module for rng
+import re                            # Import regular expression operations
+import sys                           # Import system-specific parameters and functions
+from optparse import OptionParser    # Import option parser module
+import numpy as np                   # Import numpy module
+from Bio import SeqIO                # Import required BIO modules
+from Bio.Seq import Seq              # Import callable function from Seq module
 from Bio.SeqRecord import SeqRecord  # Import callable function from SeqRecord module
-fsep = os.sep  # Get operating system file separator
+fsep = os.sep                        # Get operating system file separator
 # ======================================================================================= #
 # ============================= Sequence Partition Function ============================= #
 def windowSeq(seq, n):  # Function: windowSeq(inputSequence,threshold for # of fragments)
